@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест о Таджикистане</title>
+    <link rel="stylesheet" href="Чисто стиль.css">
+</head>
+<body>
+    <div class="реклама-блок">
+        <div class="реклама-контент">
+            <span class="крестик">×</span>
+            <a href="https://www.aviasales.ru/?marker=15468.ydof241343903371&yclid=9995306560949846015" target="_blank">
+                <img src="авио.gif" alt="Специальное предложение">
+                <p class="реклама-текст">Туры в Таджикистан со скидкой 30%!</p>
+            </a>
+        </div>
+    </div>
+
+    <header class="шапка">
+        <h1>Проверьте свои знания о Таджикистане</h1>
+    </header>
+
+    <nav class="меню">
+        <a href="Главная страница.html" class="кнопка">Вернуться на главную</a>
+    </nav>
+
+    <main class="тест-контейнер">
+        <form id="тест-форма">
+            <div class="вопрос">
+                <h3>1. Какой процент территории Таджикистана занимают горы?</h3>
+                <label><input type="radio" name="q1" value="a"> 75%</label>
+                <label><input type="radio" name="q1" value="b"> 83%</label>
+                <label><input type="radio" name="q1" value="c"> 93%</label>
+            </div>
+
+            <div class="вопрос">
+                <h3>2. Как называется высочайшая вершина Таджикистана?</h3>
+                <label><input type="radio" name="q2" value="a"> Пик Ленина</label>
+                <label><input type="radio" name="q2" value="b"> Пик Исмоила Сомони</label>
+                <label><input type="radio" name="q2" value="c"> Пик Корженевской</label>
+            </div>
+
+            <div class="вопрос">
+                <h3>3. Какой древний город называют "Среднеазиатскими Помпеями"?</h3>
+                <label><input type="radio" name="q3" value="a"> Худжанд</label>
+                <label><input type="radio" name="q3" value="b"> Пенджикент</label>
+                <label><input type="radio" name="q3" value="c"> Истаравшан</label>
+            </div>
+
+            <div class="вопрос">
+                <h3>4. Какое озеро является одним из красивейших в Таджикистане?</h3>
+                <label><input type="radio" name="q4" value="a"> Искандеркуль</label>
+                <label><input type="radio" name="q4" value="b"> Каракуль</label>
+                <label><input type="radio" name="q4" value="c"> Сарезское</label>
+            </div>
+
+            <div class="вопрос">
+                <h3>5. С культурой какой страны тесно связана таджикская культура?</h3>
+                <label><input type="radio" name="q5" value="a"> Китайской</label>
+                <label><input type="radio" name="q5" value="b"> Персидской</label>
+                <label><input type="radio" name="q5" value="c"> Арабской</label>
+            </div>
+
+            <button type="button" class="кнопка" onclick="проверитьТест()">Проверить ответы</button>
+        </form>
+
+        <div id="результат" class="результат-теста"></div>
+    </main>
+
+    <footer class="подвал">
+    </footer>
+
+    <script>
+        function проверитьТест() {
+            const ответы = {
+                q1: "c",
+                q2: "b",
+                q3: "b",
+                q4: "a",
+                q5: "b"
+            };
+
+            let баллы = 0;
+            const форма = document.getElementById("тест-форма");
+            const результат = document.getElementById("результат");
+
+            for (let i = 1; i <= 5; i++) {
+                const выбранныйОтвет = форма.elements[`q${i}`].value;
+                if (выбранныйОтвет === ответы[`q${i}`]) {
+                    баллы++;
+                }
+            }
+
+            let оценка = "";
+            if (баллы === 5) оценка = "Отлично! Вы настоящий знаток Таджикистана!";
+            else if (баллы >= 3) оценка = "Хорошо! Но есть куда стремиться.";
+            else оценка = "Попробуйте еще раз, изучите материалы на главной странице.";
+
+            результат.innerHTML = `
+                    <h3>Ваш результат: ${баллы} из 5</h3>
+                    <p>${оценка}</p>
+                `;
+            результат.style.display = "block";
+        }
+    </script>
+</body>
+</html>
